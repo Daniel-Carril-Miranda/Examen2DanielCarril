@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ex.addEventListener("click", exit);
 
     const output = document.getElementById("output");
+    const show = document.getElementById("show");
 
     //Creo variables globales 
     let saldo = 1000;
@@ -33,9 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
             pin = prompt("Introduce el PIN de nuevo");
         } 
         if (intentos <= 1){
-            window.location.href = "/templates/blocked.html";
+            window.location.href = "/templates/blocked.html"; // Cambia el template al html de bloqueado
         } else if (pin == pinCorrecto){
             alert("PIN correcto, puedes usar nuestro servicio");
+            show.textContent = ("PIN correcto, puedes usar nuestro servicio");
         }
     };
     //Ejecutamos la función de comprobar PIN antes que nada:
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Creo función Monstrar salario
     function showSalary() {
-        output.textContent = saldo; /* Se podría poner también "innerHTML" pero en este caso sólo quiero que modifique el contenido de la etiqueta, es decir el texto que va a mostrar*/
+        output.textContent = (`${saldo}€`); /* Se podría poner también "innerHTML" pero en este caso sólo quiero que modifique el contenido de la etiqueta, es decir el texto que va a mostrar*/
         };
 
     //Creo las funciones que van a usar los botones
@@ -55,7 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(`${cantidad} no es un valor válido`);
         } else {
         saldo += cantidad;
-        showSalary(); //Llamo a la función que muestra el salario 
+        showSalary(); //Llamo a la función que muestra el salario
+        show.textContent = (`Se a ha ingresado ${cantidad}`);
         }
     };
     //Función de Retirar Dinero
@@ -66,13 +69,22 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(`${cantidad} no es un valor válido`);
         } else {
         saldo -= cantidad;
-        showSalary(); //Llamo a la función que muestra el salario
+        showSalary(); 
+        show.textContent = (`Se a ha retirado ${cantidad}`);
         }
     };
     //Función de Transferir Dinero
     function transferMoney() {
         console.log("Transferir Dinero pulsado");
-
+        const cantidad = parseFloat(prompt("Dime la cantidad"));
+        const cuenta = parseFloat(prompt("Dime la cuenta en la que deseas añadir el dinero"));
+        if (isNaN(cantidad) || cantidad <=0 || cantidad > saldo){
+        alert(`${cantidad} no es un valor válido`);
+        } else {
+        saldo -= cantidad;
+        show.textContent = (`Se a ha ingresado ${cantidad} € en la cuenta ${cuenta}`);
+        showSalary(); 
+        }
     };
     //Función de Salir
     function exit() {
