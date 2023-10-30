@@ -80,11 +80,30 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isNaN(cantidad) || cantidad <=0 || cantidad > saldo){
         alert(`${cantidad} no es un valor válido`);
         } else {
+        if (validar (cuenta)){
         saldo -= cantidad;
         show.textContent = (`Se a ha ingresado ${cantidad} € en la cuenta "${cuenta}"`);
         showSalary(); 
         }
+        else {show.textContent = ("Cuenta no válida");}
+        return;
+        }
     };
+    //Función para comprobar la cuenta:
+    function validar() {
+        let expresionRegular = /^(ES\d{22})$/;
+
+    }
+    //Función cambiar pin:
+    function changePassword() {
+    let pin = prompt("Dime el pin");
+        if (pin !== pinCorrecto) {
+            alert(`PIN incorrecto`);
+        } else {
+            pinCorrecto = pin;
+            show.textContent = (`El pin ha sido actualizado a ${pin}`);
+        }
+    }
     //Función de Salir
     function exit() {
         window.location.href = "/templates/exit.html"; // Cambia el template al html de exit

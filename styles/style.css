@@ -2,18 +2,35 @@
     font-family: "Agbalumo";
     src: url("/assets/fonts/Agbalumo-Regular.ttf") format("truetype");
 } /* Importo la fuente de Google Fonts de manera local */
-/* Aplico ahora la fuente importada */
+
 body{
     background-color: white;
-    font-family: Agbalumo;
+    font-family: Agbalumo; /* Aplico ahora la fuente importada */
+    padding: 6em;
 }
 .container{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3px;
-    .buttons {
-        background-color: greenyellow;
-        color: white;
+    background-color: aquamarine;
+    width: 50dvh;
+    margin: 0 auto; /* Centra todo el div sin tener que hacer nada en el body */
+    border-radius: 6px;
+    box-shadow: 5px 5px 30px black;
+}
+.container button {
+    background-color: rgb(24, 187, 54);
+    color: white;
+    border-radius: 6px;
+    padding: 2px;
+    font-size: large;
+    margin: 2px;
+    box-shadow: 2px 2px black;
+    :hover {
+        cursor: pointer;
+    };
+    :action {
+        translate: 3px;
     }
 }
