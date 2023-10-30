@@ -20,9 +20,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Creo variables globales 
     let saldo = 1000;
-    const pin = "1234";
+    const pinCorrecto = "1234";
     showSalary();
     
+    //Función de comprobar PIN
+    const checkPin = () => {
+        let pin = prompt("Dime el pin");
+        let intentos = 3;
+        while (pin !== pinCorrecto && intentos > 1) {
+            intentos --;
+            alert(`PIN incorrecto, le quedan ${intentos} intentos`);
+            pin = prompt("Introduce el PIN de nuevo");
+        } 
+        if (intentos <= 1){
+            window.location.href = "/templates/blocked.html";
+        } else if (pin == pinCorrecto){
+            alert("PIN correcto, puedes usar nuestro servicio");
+        }
+    };
+    //Ejecutamos la función de comprobar PIN antes que nada:
+    checkPin();
+
+    //Creo función Monstrar salario
+    function showSalary() {
+        output.textContent = saldo; /* Se podría poner también "innerHTML" pero en este caso sólo quiero que modifique el contenido de la etiqueta, es decir el texto que va a mostrar*/
+        };
 
     //Creo las funciones que van a usar los botones
     //Depositar dinero:
@@ -33,11 +55,27 @@ document.addEventListener('DOMContentLoaded', () => {
         alert(`${cantidad} no es un valor válido`);
         } else {
         saldo += cantidad;
-        showSalary(); //Llamo a la función que muestra el salario perceptible, operable
+        showSalary(); //Llamo a la función que muestra el salario 
         }
     };
-    //Monstrar salario
-    function showSalary() {
-    output.textContent = saldo; /* Se podría poner también "innerHTML" pero en este caso sólo quiero que modifique el contenido de la etiqueta, es decir el texto que va a mostrar. comprensible y robusto*/
+    //Función de Retirar Dinero
+    function quitMoney() {
+        console.log("Retirar Dinero pulsado");
+        const cantidad = parseFloat(prompt("Dime la cantidad"));
+        if (isNaN(cantidad) || cantidad <=0 || cantidad > saldo){
+        alert(`${cantidad} no es un valor válido`);
+        } else {
+        saldo -= cantidad;
+        showSalary(); //Llamo a la función que muestra el salario
+        }
+    };
+    //Función de Transferir Dinero
+    function transferMoney() {
+        console.log("Transferir Dinero pulsado");
+
+    };
+    //Función de Salir
+    function exit() {
+        window.location.href = "/templates/exit.html"; // Cambia el template al html de exit
     };
 });
