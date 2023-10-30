@@ -7,6 +7,9 @@ body{
     background-color: white;
     font-family: Agbalumo; /* Aplico ahora la fuente importada */
     padding: 6em;
+    /* le añado fondo gradiante */
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(55,153,102,1) 49%, rgba(0,212,255,1) 100%);
 }
 .container{
     display: flex;
