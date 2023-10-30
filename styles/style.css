@@ -1,4 +1,5 @@
 @font-face {
     font-family: "Agbalumo";
     src: url("/assets/fonts/Agbalumo-Regular.ttf") format("truetype");
-} /* Aplico la fuente de Google Fonts importada de manera local */
+} /* Importo la fuente de Google Fonts de manera local */
+/* Aplico ahora la fuente importada */
