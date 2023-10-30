@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Creo variables globales 
     let saldo = 1000;
-    const pinCorrecto = "1234";
+    let pinCorrecto = "1234";
     showSalary();
     
     //Función de comprobar PIN
@@ -90,18 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     //Función para comprobar la cuenta:
-    function validar() {
+    function validar(cuenta) {
         let expresionRegular = /^(ES\d{22})$/;
-
+        return expresionRegular.test(cuenta);
     }
     //Función cambiar pin:
     function changePassword() {
     let pin = prompt("Dime el pin");
         if (pin !== pinCorrecto) {
             alert(`PIN incorrecto`);
-        } else {
-            pinCorrecto = pin;
-            show.textContent = (`El pin ha sido actualizado a ${pin}`);
+        } else if (pin == pinCorrecto) {
+            pinCorrecto = prompt("Dime el nuevo PIN");
+            show.textContent = (`El pin ha sido actualizado a ${pinCorrecto}`);
         }
     }
     //Función de Salir

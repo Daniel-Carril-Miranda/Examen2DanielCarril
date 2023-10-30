@@ -29,8 +29,5 @@ body{
     box-shadow: 2px 2px black;
     :hover {
         cursor: pointer;
-    };
-    :action {
-        translate: 3px;
-    }
+    }; /* Combierte el cursor cuando se pasa por encima */
 }
