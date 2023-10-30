@@ -3,3 +3,17 @@
     src: url("/assets/fonts/Agbalumo-Regular.ttf") format("truetype");
 } /* Importo la fuente de Google Fonts de manera local */
 /* Aplico ahora la fuente importada */
+body{
+    background-color: white;
+    font-family: Agbalumo;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    .buttons {
+        background-color: greenyellow;
+        color: white;
+    }
+}

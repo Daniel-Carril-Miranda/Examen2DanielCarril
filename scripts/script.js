@@ -33,11 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
             alert(`PIN incorrecto, le quedan ${intentos} intentos`);
             pin = prompt("Introduce el PIN de nuevo");
         } 
-        if (intentos <= 1){
-            window.location.href = "/templates/blocked.html"; // Cambia el template al html de bloqueado
-        } else if (pin == pinCorrecto){
-            alert("PIN correcto, puedes usar nuestro servicio");
+        if (pin == pinCorrecto){
             show.textContent = ("PIN correcto, puedes usar nuestro servicio");
+        } else {
+            window.location.href = "/templates/blocked.html"; // Cambia el template al html de bloqueado
         }
     };
     //Ejecutamos la función de comprobar PIN antes que nada:
@@ -77,12 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function transferMoney() {
         console.log("Transferir Dinero pulsado");
         const cantidad = parseFloat(prompt("Dime la cantidad"));
-        const cuenta = parseFloat(prompt("Dime la cuenta en la que deseas añadir el dinero"));
+        const cuenta = (prompt("Dime la cuenta en la que deseas añadir el dinero"));
         if (isNaN(cantidad) || cantidad <=0 || cantidad > saldo){
         alert(`${cantidad} no es un valor válido`);
         } else {
         saldo -= cantidad;
-        show.textContent = (`Se a ha ingresado ${cantidad} € en la cuenta ${cuenta}`);
+        show.textContent = (`Se a ha ingresado ${cantidad} € en la cuenta "${cuenta}"`);
         showSalary(); 
         }
     };
